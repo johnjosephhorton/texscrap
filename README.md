@@ -1,13 +1,11 @@
 texscrap
 ========
-`texscrap` is a Python utility from turning snippets of LaTeX--either files (via `--file`) or equations (via `--equation`) into tightly bound stand-alone PDFs (and optionally, PNGs, via `--png` flag). 
+`texscrap` is a Python utility from turning snippets of LaTeX--either files (via `--file`) or equations (via `--equation`)---into tightly bound stand-alone PDFs. 
+Optionally, you can also create PNGs, via the `--png` flag. 
 The resultant files are written the directory the script is called from. 
-If you use the `--equation` option, a file `equation_<unix timestamp>.tex` is written into your directory. 
 
-The primary use case is getting image files for inclusion in a presentation. 
+The primary use case is creating image files for inclusion in a presentation or blog post. 
 Even if you are using a Beamer class for presentations, it is often useful to include images of tables and equations rather than the actual TeX since the re-sizing options are more flexible. 
-
-The actual LaTeX "wrapper" is in the directory `./templates` and can be easily modified with the pacakges you need. 
 
 Dependencies
 ------------
@@ -29,6 +27,14 @@ To render an equation, we can run:
     texscrap -e "\int_x^y dx"
 
 which creates the file [equation_file1374688256.pdf](https://dl.dropboxusercontent.com/u/420874/permanent/equation_file1374688256.pdf). 
+
+
+Misc Notes
+----------
+The actual LaTeX "wrapper" is in the directory `./templates` and can be easily modified with the pacakges you need. 
+If you use the `--equation` option, a file `equation_<unix timestamp>.tex` is written into your directory. 
+
+
 
 Documentation
 -------------
