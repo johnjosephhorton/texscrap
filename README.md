@@ -1,6 +1,5 @@
 texscrap
 ========
-
 `texscrap` is a Python utility from turning snippets of LaTeX--either files (via `--file`) or equations (via `--equation`) into tightly bound stand-alone PDFs (and optionally, PNGs, via `--png` flag). 
 The resultant files are written the directory the script is called from. 
 If you use the `--equation` option, a file `equation_<unix timestamp>.tex` is written into your directory. 
@@ -47,4 +46,6 @@ optional arguments:
                         Equation to render
   --png                 Creat a companion PNG file.
 ```
+
+=======
 
