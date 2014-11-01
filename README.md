@@ -7,6 +7,12 @@ The resultant files are written the directory the script is called from.
 The primary use case is creating image files for inclusion in a presentation or blog post. 
 Even if you are using a Beamer class for presentations, it is often useful to include images of tables and equations rather than the actual TeX since the re-sizing options are more flexible. 
 
+It can also read from standard input i.e., 
+
+    cat "hello world" | texscrap 
+
+which will produce a pdf file called `stdin_file_<seconds from unix epoch>.pdf` in the directory. 
+
 Dependencies
 ------------
 
