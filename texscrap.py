@@ -6,6 +6,7 @@ from jinja2 import Environment, FileSystemLoader
 import subprocess 
 import tempfile 
 import time 
+import sys 
 
 __author__ = 'John Joseph Horton'
 __description__ = 'Runs pdflatex on a LaTeX file that lacks a header and returns a tightly cropped PDF, and optionally, a PNG file. Can also run on a quoted LaTeX equation'
@@ -91,8 +92,11 @@ def main():
             f.write("$" + args.equation + "$")
             f.close()
     else: 
-        print("Nothing to parse!")
-        return False
+        tex_file_name = "stdin_file" + str(int(time.time())) + ".tex"
+        g = open(tex_file_name, "w")
+        for line in sys.stdin.readlines():
+            g.write(line)
+        g.close()
             
     base_file_name = tex_file_name.replace(".tex", "")
     wrapped_snippet_file_name = base_file_name + "_wrapped.tex"
