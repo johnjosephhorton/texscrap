@@ -32,10 +32,11 @@ def make_pdf(file_name, output_file_name, seq = ['p', 'p']):
                                               stdout=subprocess.PIPE)
             print("PDFTEX return code is %s" % pdftex_process.returncode)
             if pdftex_process.returncode != 0:
-                txt = pdftex_process.communicate()[0].split("\n")
+                message = pdftex_process.communicate()[0].decode() 
+                txt = message.split("\n")
                 for l in txt:
                     if len(l) > 0 and l[0]=='!':
-                        print l
+                        print(l)
         os.system("mv %s %s" % (file_name.replace(".tex", ".pdf"), output_file_name)) 
     return None 
 
