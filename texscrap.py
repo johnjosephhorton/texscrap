@@ -7,6 +7,7 @@ import subprocess
 import tempfile 
 import time 
 import sys 
+import string
 
 __author__ = 'John Joseph Horton'
 __description__ = 'Runs pdflatex on a LaTeX file that lacks a header and returns a tightly cropped PDF, and optionally, a PNG file. Can also run on a quoted LaTeX equation'
@@ -71,6 +72,16 @@ def cleanup(base_file_name):
     os.remove(base_file_name + "_wrapped.log")
     os.remove(base_file_name + "_wrapped.out")
 
+
+def better_name(filename):
+    """Creates a valid, memorable file name based on entered equation"""
+    MAX_LENGTH = 25
+    filename = filename.replace(" ", "_")
+    filename = filename.replace("+", "plus")
+    filename = filename.replace("^", "_pwr_")
+    valid_chars = "_%s%s" % (string.ascii_letters, string.digits)
+    return ''.join(c for c in filename if c in valid_chars)[0:MAX_LENGTH]
+    
 def main():
     loader = FileSystemLoader(
             os.path.join(os.path.dirname(
@@ -88,7 +99,7 @@ def main():
     if args.file:
         tex_file_name = args.file
     elif args.equation: 
-        tex_file_name = "equation_file" + str(int(time.time())) + ".tex"
+        tex_file_name = better_name(args.equation) + ".tex"
         with open(tex_file_name, "w") as f: 
             f.write("$" + args.equation + "$")
             f.close()
@@ -116,6 +127,8 @@ def main():
         pdf2png(pdf_file_name, png_file_name)
     
     cleanup(base_file_name)         
+
+
 
 if __name__ == '__main__':
     main()
