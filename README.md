@@ -43,6 +43,9 @@ To create files for each, you can run:
 
     <multiline.txt xargs -I % texscrap -e "%"
 
+To build a collection of files (such as a directory of tables): 
+
+    find . -name '*tex' -print0 | xargs -0 -I % texscrap -f %
     
 Building from a file
 --------------------
