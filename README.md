@@ -17,10 +17,9 @@ will generate a PDF file that looks like this:
 
 ![example_image](e_pwr_pi_i_plus_1__0.png)
 
-Dependencies
-------------
+if you want a PNG file as well, you can just add a `--png` flag i.e..,
 
-In addition to `jinja2`, this script also requires [pdflatex](http://www.tug.org/applications/pdftex/), [ImageMagick](http://www.imagemagick.org/script/index.php) and [pdfcrop](http://www.ctan.org/pkg/pdfcrop).  
+    texscrap --png -e "e^{\pi i} + 1 = 0"
 
 To install
 ----------
@@ -28,6 +27,8 @@ To install
     git clone git@github.com:johnjosephhorton/texscrap.git
     cd texscrap
     sudo python setup.py install 
+
+In addition to `jinja2`, this script also requires [pdflatex](http://www.tug.org/applications/pdftex/), [ImageMagick](http://www.imagemagick.org/script/index.php) and [pdfcrop](http://www.ctan.org/pkg/pdfcrop).  
 
 Rendering a collection of equations in batch
 --------------------------------------------
