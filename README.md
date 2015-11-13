@@ -9,7 +9,7 @@ Even if you are using a Beamer class for presentations, it is often useful to in
 
 It can also read from standard input i.e., 
 
-    cat "hello world" | texscrap 
+    echo "hello world" | texscrap 
 
 which will produce a pdf file called `stdin_file_<seconds from unix epoch>.pdf` in the directory. 
 
@@ -20,26 +20,37 @@ In addition to `jinja2`, this script also requires [pdflatex](http://www.tug.org
 
 To install
 ----------
-
     git clone git@github.com:johnjosephhorton/texscrap.git
-	cd texscrap 
-	sudo python setup.pu install 
+    cd texscrap
+    sudo python setup.py install 
 
 Example
 -------
-
 To render an equation, we can run: 
 
     texscrap -e "\int_x^y dx"
 
-which creates the file [equation_file1374688256.pdf](https://dl.dropboxusercontent.com/u/420874/permanent/equation_file1374688256.pdf). 
+You can also render a bunch of equations in batch. Suppose you have file `multiline.txt` with your equations: 
 
+    cat multiline.txt
+    x^2 + 3x
+    \int x^2 dx
+    \log x
 
-Misc Notes
-----------
+To create files for each, you can run:
+
+    <multiline.txt xargs -I % texscrap -e "%"
+
+Building from a file
+--------------------
+You can also build from a file, like so: 
+
+    texscrap -f <name of latex file.tex> 
+
+Changing the LaTeX packages installed
+--------------------------------------
+
 The actual LaTeX "wrapper" is in the directory `./templates` and can be easily modified with the pacakges you need. 
-If you use the `--equation` option, a file `equation_<unix timestamp>.tex` is written into your directory. 
-
 
 
 Documentation
