@@ -20,6 +20,7 @@ In addition to `jinja2`, this script also requires [pdflatex](http://www.tug.org
 
 To install
 ----------
+
     git clone git@github.com:johnjosephhorton/texscrap.git
     cd texscrap
     sudo python setup.py install 
@@ -41,11 +42,13 @@ To create files for each, you can run:
 
     <multiline.txt xargs -I % texscrap -e "%"
 
+    
 Building from a file
 --------------------
 You can also build from a file, like so: 
 
     texscrap -f <name of latex file.tex> 
+
 
 Changing the LaTeX packages installed
 --------------------------------------
@@ -69,6 +72,3 @@ optional arguments:
                         Equation to render
   --png                 Creat a companion PNG file.
 ```
-
-=======
-
